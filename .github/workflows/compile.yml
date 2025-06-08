@@ -8,19 +8,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-       - name: Configuring git environment.
-         run: |
-            git config --global user.name vinzxx
-            git config --global user.email vinzxzgaming@gmail.com
+      - name: Configuring git environment.
+        run: |
+          git config --global user.name vinzxx
+          git config --global user.email vinzxzgaming@gmail.com
 
-       - name: Building Kernel.
-         run: |
-             git clone --depth 1 https://github.com/Vynxid/kernel_xiaomi_ginkas.git -b fifteen kernel
-             cd kernel
-             chmod 777 build.sh
-             ./build.sh
+      - name: Building Kernel.
+        run: |
+          git clone --depth 1 https://github.com/Vynxid/kernel_xiaomi_ginkas.git -b fifteen kernel
+          cd kernel
+          chmod 777 build.sh
+          ./build.sh
 
-       - name: Uploading ZIP.
-         run: |
-             cd kernel
-             curl -T *.zip https://pixeldrain.com/api/file/ && echo ""
+      - name: Uploading Kernel ZIP as GitHub Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kernel-zip
+          path: kernel/*.zip
