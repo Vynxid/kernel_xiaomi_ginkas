@@ -18,7 +18,7 @@ sudo -E apt-get -qq update
 sudo -E apt-get -qq install bc python2 python3 python-is-python3
 
 # KernelSU
-curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s v1.0.8
 
 # Check for essentials
 if ! [ -d "${TC_DIR}" ]; then
